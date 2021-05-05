@@ -1,3 +1,12 @@
+
+-- 𝐃𝐨𝐧'𝐭 𝐄𝐝𝐢𝐭 𝐮𝐧𝐥𝐞𝐬𝐬 𝐘𝐨𝐮 𝐤𝐧𝐨𝐰 𝐰𝐡𝐚𝐭 𝐚𝐫𝐞 𝐲𝐨𝐮 𝐝𝐨𝐢𝐧𝐠.
+
+-- 𝗗𝗼𝗻'𝘁 𝗘𝗱𝗶𝘁 𝘂𝗻𝗹𝗲𝘀𝘀 𝗬𝗼𝘂 𝗸𝗻𝗼𝘄 𝘄𝗵𝗮𝘁 𝗮𝗿𝗲 𝘆𝗼𝘂 𝗱𝗼𝗶𝗻𝗴.
+
+-- 𝘋𝘰𝘯'𝘵 𝘌𝘥𝘪𝘵 𝘶𝘯𝘭𝘦𝘴𝘴 𝘠𝘰𝘶 𝘬𝘯𝘰𝘸 𝘸𝘩𝘢𝘵 𝘢𝘳𝘦 𝘺𝘰𝘶 𝘥𝘰𝘪𝘯𝘨.
+
+-- 𝘿𝙤𝙣'𝙩 𝙀𝙙𝙞𝙩 𝙪𝙣𝙡𝙚𝙨𝙨 𝙔𝙤𝙪 𝙠𝙣𝙤𝙬 𝙬𝙝𝙖𝙩 𝙖𝙧𝙚 𝙮𝙤𝙪 𝙙𝙤𝙞𝙣𝙜.
+
 -- 𝐃𝐨𝐧'𝐭 𝐄𝐝𝐢𝐭 𝐮𝐧𝐥𝐞𝐬𝐬 𝐘𝐨𝐮 𝐤𝐧𝐨𝐰 𝐰𝐡𝐚𝐭 𝐚𝐫𝐞 𝐲𝐨𝐮 𝐝𝐨𝐢𝐧𝐠.
 
 -- 𝗗𝗼𝗻'𝘁 𝗘𝗱𝗶𝘁 𝘂𝗻𝗹𝗲𝘀𝘀 𝗬𝗼𝘂 𝗸𝗻𝗼𝘄 𝘄𝗵𝗮𝘁 𝗮𝗿𝗲 𝘆𝗼𝘂 𝗱𝗼𝗶𝗻𝗴.
@@ -18,13 +27,6 @@ local Keys = {
 	["NENTER"] = 201, ["N4"] = 108, ["N5"] = 60, ["N6"] = 107, ["N+"] = 96, ["N-"] = 97, ["N7"] = 117, ["N8"] = 61, ["N9"] = 118
 }
 
-local voice = {default = 15.0, shout = 30.0, whisper = 3.0, police = 15.0, current = 0, level = nil}
-
-ESX                           = nil
-local PlayerData              = {}
-local Busy 					  = false
-local Nearby                  = false
-
 -- 𝐃𝐨𝐧'𝐭 𝐄𝐝𝐢𝐭 𝐮𝐧𝐥𝐞𝐬𝐬 𝐘𝐨𝐮 𝐤𝐧𝐨𝐰 𝐰𝐡𝐚𝐭 𝐚𝐫𝐞 𝐲𝐨𝐮 𝐝𝐨𝐢𝐧𝐠.
 
 -- 𝗗𝗼𝗻'𝘁 𝗘𝗱𝗶𝘁 𝘂𝗻𝗹𝗲𝘀𝘀 𝗬𝗼𝘂 𝗸𝗻𝗼𝘄 𝘄𝗵𝗮𝘁 𝗮𝗿𝗲 𝘆𝗼𝘂 𝗱𝗼𝗶𝗻𝗴.
@@ -32,6 +34,12 @@ local Nearby                  = false
 -- 𝘋𝘰𝘯'𝘵 𝘌𝘥𝘪𝘵 𝘶𝘯𝘭𝘦𝘴𝘴 𝘠𝘰𝘶 𝘬𝘯𝘰𝘸 𝘸𝘩𝘢𝘵 𝘢𝘳𝘦 𝘺𝘰𝘶 𝘥𝘰𝘪𝘯𝘨.
 
 -- 𝘿𝙤𝙣'𝙩 𝙀𝙙𝙞𝙩 𝙪𝙣𝙡𝙚𝙨𝙨 𝙔𝙤𝙪 𝙠𝙣𝙤𝙬 𝙬𝙝𝙖𝙩 𝙖𝙧𝙚 𝙮𝙤𝙪 𝙙𝙤𝙞𝙣𝙜.
+local voice = {default = 15.0, shout = 30.0, whisper = 3.0, police = 15.0, current = 0, level = nil}
+
+ESX                           = nil
+local PlayerData              = {}
+local Busy 					  = false
+local Nearby                  = false
 
 Citizen.CreateThread(function()
 	while ESX == nil do
@@ -165,12 +173,12 @@ Citizen.CreateThread(function()
 
 		if IsControlJustPressed(2, Keys["Z"]) and GetLastInputMethod(2) and PlayerData.job.name ~= nil and PlayerData.job.name == "police" then
 			if Busy == true then
-				TriggerServerEvent("policerad:stopActionB") -- Aktion für andere Personen stoppen
+				TriggerServerEvent("policerad:stopActionB") -- Action for other people stop
                 EnableActions(GetPlayerPed(-1))
                 TriggerEvent("policerad:stopAnim", source)
 				Busy = false
 			else
-				TriggerServerEvent("policerad:startActionB") -- Aktion für andere Personen starten
+				TriggerServerEvent("policerad:startActionB") -- Action for other people start
                 DisableActions(GetPlayerPed(-1))
                 TriggerEvent("policerad:startAnim", source)
 				Busy = true
@@ -201,12 +209,12 @@ Citizen.CreateThread(function()
 
 		if IsControlJustPressed(2, Keys["Z"]) and GetLastInputMethod(2) and PlayerData.job.name ~= nil and PlayerData.job.name == "ambulance" then
 			if Busy == true then
-				TriggerServerEvent("ambulancerad:stopActionB") -- Aktion für andere Personen stoppen
+				TriggerServerEvent("ambulancerad:stopActionB") -- Action for other people stop
                 EnableActions(GetPlayerPed(-1))
                 TriggerEvent("ambulancerad:stopAnim", source)
 				Busy = false
 			else
-				TriggerServerEvent("ambulancerad:startActionB") -- Aktion für andere Personen starten
+				TriggerServerEvent("ambulancerad:startActionB") -- Action for other people start
                 DisableActions(GetPlayerPed(-1))
                 TriggerEvent("ambulancerad:startAnim", source)
 				Busy = true
@@ -248,12 +256,6 @@ end
 
 -- EVENTS
 
-Citizen.Trace('\n')
-Citizen.Trace('Menu By Shafat\n')
-Citizen.Trace('ESX is Cool!\n')
-Citizen.Trace('VENOM#9208 on discord!\n')
-Citizen.Trace('\n')
-
 RegisterNetEvent('esx:setJob')
 AddEventHandler('esx:setJob', function(job)
     PlayerData.job = job
@@ -261,14 +263,14 @@ AddEventHandler('esx:setJob', function(job)
     Citizen.Wait(5000)
 end)
 
-RegisterNetEvent("policerad:startActionB") -- Aktion Person B
+RegisterNetEvent("policerad:startActionB") -- actionPersonB
 AddEventHandler("policerad:startActionB", function()
-    NetworkSetTalkerProximity(0.00) -- Sprachreichweite wird unbegrenzt
+    NetworkSetTalkerProximity(0.00) -- Language range is unlimited
 end)
 
-RegisterNetEvent("policerad:stopActionB") -- Aktion Person B
+RegisterNetEvent("policerad:stopActionB") -- Action person b
 AddEventHandler("policerad:stopActionB", function()
-    NetworkSetTalkerProximity(6.00) -- Sprachreichweite wird 6 Meter
+    NetworkSetTalkerProximity(6.00) -- Speech range is 6 meters
 end)
 
 RegisterNetEvent("policerad:startAnim") -- Event, um andere Personen Animation starten zu lassen
@@ -306,21 +308,17 @@ AddEventHandler('policerad:playSoundWithinDistanceClient', function(playerNetId,
     end
 end)
 
-
-----------------------------
-
-
-RegisterNetEvent("ambulancerad:startActionB") -- Aktion Person B
+RegisterNetEvent("ambulancerad:startActionB") -- Action person b
 AddEventHandler("ambulancerad:startActionB", function()
     NetworkSetTalkerProximity(0.00) -- Language range is unlimited
 end)
 
-RegisterNetEvent("ambulancerad:stopActionB") -- Aktion Person B
+RegisterNetEvent("ambulancerad:stopActionB") -- Action person b
 AddEventHandler("ambulancerad:stopActionB", function()
     NetworkSetTalkerProximity(6.00) -- Speech range is 6 meters
 end)
 
-RegisterNetEvent("ambulancerad:startAnim") -- Event, um andere Personen Animation starten zu lassen
+RegisterNetEvent("ambulancerad:startAnim") -- Event to let other people start animation
 AddEventHandler("ambulancerad:startAnim", function(player)
     Citizen.CreateThread(function()
     	if not IsPedSittingInAnyVehicle(GetPlayerPed(-1)) then
