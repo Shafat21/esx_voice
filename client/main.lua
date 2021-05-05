@@ -232,6 +232,12 @@ end
 
 -- EVENTS
 
+Citizen.Trace('\n')
+Citizen.Trace('Menu By Shafat\n')
+Citizen.Trace('ESX is Cool!\n')
+Citizen.Trace('VENOM#9208 on discord!\n')
+Citizen.Trace('\n')
+
 RegisterNetEvent('esx:setJob')
 AddEventHandler('esx:setJob', function(job)
     PlayerData.job = job
