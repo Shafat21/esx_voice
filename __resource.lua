@@ -5,11 +5,11 @@ description 'shafat_voicesystem'
 version '1.1.0'
 
 client_scripts {
-	'@tprp_base/locale.lua',
+	'@es_extended/locale.lua',
 	'locales/br.lua',
 	'locales/en.lua',
 	'locales/fi.lua',
-    'locales/fr.lua',
+    	'locales/fr.lua',
 	'locales/pl.lua',
 	'locales/sv.lua',
 	'config.lua',
