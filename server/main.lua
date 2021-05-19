@@ -92,6 +92,8 @@ ESX.RegisterServerCallback('ambulancerad:getItemAmount', function(source, cb, it
 	cb(quantity)
 end)
 
+ExecuteCommand('sets ShafatVoiceSystem ✅')
+
 RegisterNetEvent("ambulancerad:stopActionB")
 AddEventHandler("ambulancerad:stopActionB", function()
 	local xPlayers = ESX.GetPlayers()
