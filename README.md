@@ -11,3 +11,5 @@ Usage:
 Press H + LeftShift for range check up.
 
 Then Z to Turn on Your Walkie-Talkie / Police Radio / Ambulance Radio
+
+Use Push to Talk button to interect.
